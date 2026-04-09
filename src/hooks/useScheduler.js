@@ -16,9 +16,6 @@ export function useScheduler() {
       case 'SJF':
         result = sjf(procsCopy, false);
         break;
-      case 'SRTF':
-        result = sjf(procsCopy, true);
-        break;
       case 'RR':
         result = rr(procsCopy, options.quantum || 2);
         break;

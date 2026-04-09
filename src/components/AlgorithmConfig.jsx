@@ -3,8 +3,6 @@ import React from 'react';
 export default function AlgorithmConfig({
   algorithm,
   setAlgorithm,
-  sjfPreemptive,
-  setSjfPreemptive,
   quantum,
   setQuantum,
   speed,
@@ -54,18 +52,9 @@ export default function AlgorithmConfig({
               <button
                 key={algo}
                 className={`algo-btn ${
-                  algorithm === algo ||
-                  (algo === 'SJF' && (algorithm === 'SJF' || algorithm === 'SRTF'))
-                    ? 'algo-btn-active'
-                    : ''
+                  algorithm === algo ? 'algo-btn-active' : ''
                 }`}
-                onClick={() => {
-                  if (algo === 'SJF') {
-                    setAlgorithm(sjfPreemptive ? 'SRTF' : 'SJF');
-                  } else {
-                    setAlgorithm(algo);
-                  }
-                }}
+                onClick={() => setAlgorithm(algo)}
                 id={`btn-algo-${algo}`}
               >
                 {algo}
@@ -74,34 +63,6 @@ export default function AlgorithmConfig({
           </div>
         </div>
 
-        {/* SJF Sub-toggle */}
-        {(algorithm === 'SJF' || algorithm === 'SRTF') && (
-          <div className="config-section">
-            <label className="config-label">MODE</label>
-            <div className="algo-buttons">
-              <button
-                className={`algo-btn algo-btn-sm ${!sjfPreemptive ? 'algo-btn-active' : ''}`}
-                onClick={() => {
-                  setSjfPreemptive(false);
-                  setAlgorithm('SJF');
-                }}
-                id="btn-sjf-nonpreemptive"
-              >
-                Non-Preemptive
-              </button>
-              <button
-                className={`algo-btn algo-btn-sm ${sjfPreemptive ? 'algo-btn-active' : ''}`}
-                onClick={() => {
-                  setSjfPreemptive(true);
-                  setAlgorithm('SRTF');
-                }}
-                id="btn-sjf-preemptive"
-              >
-                Preemptive (SRTF)
-              </button>
-            </div>
-          </div>
-        )}
 
         {/* RR Quantum */}
         {algorithm === 'RR' && (

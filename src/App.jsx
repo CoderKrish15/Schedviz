@@ -16,9 +16,7 @@ export default function App() {
     DEFAULT_PROCESSES.map((p) => ({ ...p }))
   );
 
-  // Algorithm config state
   const [algorithm, setAlgorithm] = useState('FCFS');
-  const [sjfPreemptive, setSjfPreemptive] = useState(false);
   const [quantum, setQuantum] = useState(2);
   const [speed, setSpeed] = useState(500);
   const [errorMessage, setErrorMessage] = useState('');
@@ -118,8 +116,6 @@ export default function App() {
           <AlgorithmConfig
             algorithm={algorithm}
             setAlgorithm={setAlgorithm}
-            sjfPreemptive={sjfPreemptive}
-            setSjfPreemptive={setSjfPreemptive}
             quantum={quantum}
             setQuantum={setQuantum}
             speed={speed}
